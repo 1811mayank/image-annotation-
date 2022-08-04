@@ -1,0 +1,60 @@
+<div class="container text-center upload-heading">
+    <h1>Edit image</h1>
+</div>
+
+
+
+<div class="row">
+  <div class="col-9">
+        <%# <%= form_with(model: @picture, local: true)  :html => { multipart: true } do |f| %> 
+        <%= form_with model: @picture, url: '/pictures', method: :patch,:html => { multipart: true } do |f| %>
+            
+            <%# <%= image_tag(@picture.picture_url) if @picture.picture? %> 
+            <div class="form-row" id="append-item1">
+                <div class="form-row" id="removerow2">
+                    <div class="form-group right-margin">
+                        <%= f.label :key %>
+                        <%= f.text_field :key, multiple: true%>
+                    </div>
+                    <div class="form-group right-margin">
+                        <%= f.label :value %>
+                        <%= f.text_field :value, multiple: true %>
+                    </div>
+                    <div class="form-group right-margin">
+                        <%= f.button :Remove,id: "remove2", class: "btn btn-secondary"%>
+                    </div>
+                </div>
+            </div>
+            <%= f.file_field :picture , accept: 'picture/jpeg,picture/jpg,picture/png', :class => "form-control form-control-lg"%>
+           <%# <%= @uploader.retrieve_from_store!("#{@picture}")%> 
+            <%if @picture.annotations %>
+                <div class="form-row" id="dynamic">
+                    <% @picture.annotations.each do |i|%>
+                            <div class="form-row" id="removerow1">
+                            
+                                <div class="form-group right-margin">
+                                    <%= f.label :key %>
+                                    <%= f.text_field :key, value: "#{i.key}", multiple: true%>
+                                </div>
+                                <div class="form-group right-margin">
+                                    <%= f.label :value %>
+                                    <%= f.text_field :value, value: "#{i.value}",multiple: true %>
+                                </div>
+                                <div class="form-group right-margin">
+                                    <%= f.button :Remove,id: "remove1", class: "btn btn-secondary"%>
+                                </div>
+                            </div>
+                    <% end %>
+                </div>
+                <div class="form-group right-margin">
+                    <%= f.button :add, :type => 'button', class: "btn btn-success add"%> 
+                </div>
+                <%# <%= f.number_field :amount, value: "#{@picture.annotations.count}" %>
+                
+            <% end %>  
+            
+            <%= f.submit 'upload', :class => "btn btn-success"%>
+            <input id="amount" type = "number"  value = "<%=@picture.annotations.count%>"/>
+        <% end %>
+    </div>
+</div>

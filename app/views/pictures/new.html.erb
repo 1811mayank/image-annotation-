@@ -1,0 +1,53 @@
+
+    <div class="container text-center upload-heading">
+        <h1>Upload image</h1>
+    </div>
+
+    
+<div class="container d-flex justify-content-center">
+<div class="row">
+<div class="col-mt-6  " >
+
+    <%= form_for @picture, :html => { multipart: true } do |f| %>
+        
+            
+            <%= f.file_field :picture, accept: 'picture/jpeg,picture/jpg,picture/png', :class => "form-control form-control-lg "%>
+            
+
+            <%# <form action="#" name = "annotation"> %>
+            
+                <div id="original-inputs" class = "my-6 my-6">
+                    <div id = "inputFormRow">
+                
+                        <label class = "font-weight-bold">Key</label>
+                        <input id="key" name="key" />
+                        <label class = "font-weight-bold">Value</label>
+                        <input id="value" name="value" />
+                        <%# <button type='button' class="onclick">Add More</button> %>
+                        <button type='button' id="removeRow" class="btn btn-secondary">Remove</button>
+                        <br/>
+                    </div>
+                    
+                </div>
+            
+                <input id="n" type = "number" value = 0 />
+                
+                 <%# <%= form.label :query, "Search for:" %>
+                <div class="dynamic-inputs" name='annotation'></div> 
+                <button type='button' id="onclick" class="onclick btn btn-secondary">Add Annotation</button>
+                
+            <%# </form> %>
+        
+        <%= f.submit 'upload', :class => "btn btn-success"%>
+    
+    <% end %>
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+

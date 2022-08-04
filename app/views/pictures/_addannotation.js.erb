@@ -1,0 +1,9 @@
+$(document).on('turbolinks:load', function() {
+  
+  $(".add").on("click", function(){
+        
+          $("#dynamic").append("<%= escape_javascript(render( :partial => 'pictures/addannotation' )) %>").html();
+
+    
+  });
+});

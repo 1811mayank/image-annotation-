@@ -1,0 +1,65 @@
+
+<div class="container text-center">
+    <h1>Listing of Images</h1>
+</div>  
+
+<div class="container">
+    <%= will_paginate @pictures, list_classes: %w(pagination justify-content-center)%> 
+        <div class="row">
+            <div class="col"> 
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Upload date</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+                        <% @pictures.each do |picture| %>
+                            <tr>
+                                <th scope="row" >
+                                    <%= link_to "/preview/#{picture.id}", :remote => true do %>
+                                    <%= picture.picture.identifier %>
+                                    <% end %>
+                                </th>
+                                <td><%= picture.created_at.to_date %></td>
+                                <td>
+                                    <%# <%= link_to "/preview/#{picture.id}", :remote => true do %>
+                                    <%= image_tag "#{picture.picture}", size: "100x70",class: "image-tag" %>
+                                    <%# <% end %> 
+                                </td> 
+                                  
+                                            
+                                <td><%= link_to 'Edit', edit_pictures_path(picture), method: :get,
+                                                    class: 'btn btn btn-info' %></td> 
+                            <td><%= link_to 'Remove', pictures_path(picture), method: :delete, data: {confirm: 'Are you sure?'},
+                                                    class: 'btn btn-sm btn-warning' %></td> 
+                            </tr> 
+                            <div class = "content1">
+                            </div>
+                        <% end %>   
+                    </tbody>
+                </table> 
+                
+            </div>
+        </div>  
+    <%= will_paginate @pictures, list_classes: %w(pagination justify-content-center)%> 
+</div> 
+
+<%# <script type="text/javascript">
+        $(".close-btn1").on("click", function(){  
+            // $(this).closest('.content1').toggle();
+            $(".content1").toggle();
+        
+          });
+          $(".close-btn2").on("click", function(){  
+            // $(this).closest('.content1').toggle();
+            $(".content1").toggle();
+        
+          });
+    </script> %>
+

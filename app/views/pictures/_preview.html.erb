@@ -1,0 +1,33 @@
+<div class="close-btn1">
+    ×
+</div>
+<div>
+
+    <div>
+    <%# <%= link_to "/next_image/#{picture.id}", :remote => true do %>  
+        <%= link_to "/prev_image/#{@picture.id}", :remote => true do %> 
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+        <% end %> 
+        
+    <%# <% end %> 
+
+        <%= image_tag "#{@picture.picture}",size: "1000x600" %>
+        <%= link_to "/next_image/#{@picture.id}", :remote => true do %> 
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+        <% end %> 
+    </div>
+</div>
+<div>
+    <%= link_to 'Annotate', edit_pictures_path(@picture), method: :get,
+                                                    class: 'btn btn btn-info' %>
+    <%= link_to 'Edit', edit_pictures_path(@picture), method: :get,
+                                                    class: 'btn btn btn-info' %>
+
+    <%= link_to 'Remove', pictures_path(@picture), method: :delete, data: {confirm: 'Are you sure?'},
+                                                    class: 'btn btn-sm btn-warning' %>
+    
+    
+
+</div>

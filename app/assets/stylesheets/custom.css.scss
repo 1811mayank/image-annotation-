@@ -1,0 +1,71 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.welcome{
+    margin-top: 10rem;
+}
+.upload-heading{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.right-margin{
+    margin-right: 1rem;
+}
+#append-item1{
+    display: none;
+}
+#amount{
+    display: none;
+}
+
+
+
+
+
+
+
+.content1 {
+    position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // width: 500px;
+    // height: 200px;
+    text-align: center;
+    background-color: #e8eae6;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 100;
+    display: none;
+    /*to hide popup initially*/
+}
+  
+.close-btn1 {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+
+
+
+
+// .previous {
+//     background-color: #f1f1f1;
+//     color: black;
+//   }
+  
+//   .next {
+//     background-color: #04AA6D;
+//     color: white;
+//   }
+  
+// .image-tag:hover{
+//     // position: fixed;
+//     // position: absolute;
+//     // transform: scale(1.5); 
+    
+// }

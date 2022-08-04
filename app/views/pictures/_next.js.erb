@@ -1,0 +1,12 @@
+$(".content1").css('display','none');
+
+
+
+document.querySelector('.content1').innerHTML= '<%= j render 'pictures/preview.html' %>'
+$(".content1").toggle();
+
+$(".close-btn1").on("click", function(){  
+            // $(this).closest('.content1').toggle();
+            $(".content1").toggle();
+        
+          }); 

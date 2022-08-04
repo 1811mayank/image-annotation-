@@ -1,0 +1,19 @@
+<div class="container welcome">
+    <div class="container text-center">
+        <h1>Welcome to image annotation service</h1>
+    </div>
+    <div class="container welcome" >
+        <div class="row text-center">
+            <div class="col text-center" >
+                <button type="button" class="btn btn-info btn-lg">
+                    <%= link_to "View images", pictures_path, :class => "text-white text-decoration-none"%>
+                </button>
+            </div>
+            <div class="col text-center">
+                <button type="button" class="btn btn-info btn-lg">
+                    <%= link_to "Upload Image", new_pictures_path, :class => "text-white text-decoration-none"%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
