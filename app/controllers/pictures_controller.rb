@@ -10,11 +10,28 @@ class PicturesController < ApplicationController
     end
 
     def update
+        # byebug
+        @picture = Picture.find(params[:id])
         
-        # Picture.create(:picture "#{params[:picture][:picture]}")
-        # @picture = Picture.update(params.require(:picture).permit([:picture][2]))
-        # @picture.save
-        redirect_to root_path
+        index = 1
+        while index < params[:picture][:key].length
+            unless Annotation.find_by(key: "#{params[:picture][:key][index]}", value: "#{params[:picture][:value][index]}", picture_id: "#{params[:id]}")
+                Annotation.create(key: "#{params[:picture][:key][index]}", value: "#{params[:picture][:value][index]}", picture_id: "#{params[:id]}") 
+
+            end
+            index = index + 1
+        end
+        @annotations = @picture.annotations
+        @annotations.each{ |annotation|
+            annotation.destroy unless params[:picture][:value].include?(annotation.value)
+        }
+        if params[:picture][:picture]
+            @picture.picture = params[:picture][:picture] 
+            @picture.save
+        end
+        flash[:notice] = "Image was successfully updated"
+
+        redirect_to pictures_path
     end
     def preview
         # byebug
@@ -98,6 +115,14 @@ class PicturesController < ApplicationController
         @picture.destroy
         flash[:notice] = "Your image is successfully deleted"
         redirect_to @picture
+    end
+
+    def annotations
+        @picture = Picture.find(params[:id])
+        @annotations = @picture.annotations
+        respond_to do |format|
+            format.js { render partial: 'pictures/annotations' }
+        end
     end
 
     private

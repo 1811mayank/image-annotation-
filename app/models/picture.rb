@@ -1,10 +1,8 @@
 class Picture < ApplicationRecord
     has_many :annotations, dependent: :destroy
-    
+    validate :under_annotation_limit?
     mount_uploader :picture, PictureUploader
-    def under_annotation_limit?
-        annotations.count < 10
-    end
+    
 
     def can_add_annotation?
         under_annotation_limit?
@@ -16,4 +14,8 @@ class Picture < ApplicationRecord
       def prev
         Picture.where("id < ?", id).last
       end
+      private
+      def under_annotation_limit?
+        annotations.count < 10
+    end
 end

@@ -53,7 +53,7 @@ $(document).on('turbolinks:load', function() {
             $('#amount').val(new_qty);
     }  
   });
-
+  
   $(document).on('click', '#remove1', function () {
     $(this).closest('#removerow1').remove();
     var qty = parseInt($('#amount').val());        

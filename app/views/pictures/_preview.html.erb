@@ -20,7 +20,7 @@
     </div>
 </div>
 <div>
-    <%= link_to 'Annotate', edit_pictures_path(@picture), method: :get,
+    <%= link_to 'Annotate', "/annotations/#{@picture.id}",:remote => true,
                                                     class: 'btn btn btn-info' %>
     <%= link_to 'Edit', edit_pictures_path(@picture), method: :get,
                                                     class: 'btn btn btn-info' %>

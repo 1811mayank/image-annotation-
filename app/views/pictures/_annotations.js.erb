@@ -1,0 +1,52 @@
+
+document.querySelector('.content2').innerHTML= '<%= j render 'pictures/annotations.html' %>'
+$(".content2").toggle();
+
+$(".close-btn2").on("click", function(){  
+            // $(this).closest('.content2').toggle();
+            $(".content2").toggle();
+        
+          });
+
+
+          
+  // $(".close-btn1").on("click", function(){  
+  //   // $(this).closest('.content1').toggle();
+  //   $(".content1").toggle();
+
+  // });
+
+  $(".add").on("click", function(){     
+
+    if(($("#amount").val()) < 10 ){
+      var qty = parseInt($('#amount').val());
+        
+      $("#dynamic").append($("#append-item1").html());
+            var new_qty = qty + 1;
+            if (new_qty < 0) {
+                    new_qty = 0;
+            }
+            $('#amount').val(new_qty);
+    }  
+  });
+  
+  $(document).on('click', '#remove1', function () {
+    $(this).closest('#removerow1').remove();
+    var qty = parseInt($('#amount').val());        
+            var new_qty = qty - 1;
+            if (new_qty < 0) {
+                    new_qty = 0;
+            }
+            $('#amount').val(new_qty);
+  });
+  
+  $(document).on('click', '#remove2', function () {
+    $(this).closest('#removerow2').remove();
+    var qty = parseInt($('#amount').val());        
+            var new_qty = qty - 1;
+            if (new_qty < 0) {
+                    new_qty = 0;
+            }
+            $('#amount').val(new_qty)
+  });
+

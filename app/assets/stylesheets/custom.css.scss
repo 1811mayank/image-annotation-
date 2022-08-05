@@ -43,10 +43,39 @@
     position: absolute;
     right: 20px;
     top: 15px;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border-radius: 70%;
     padding: 4px;
+    width: 2rem;
+    cursor: pointer;
+}
+.content2 {
+    position: absolute;
+    // background-color: rgb(8, 5, 5);
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 320px;
+    text-align: center;
+    // background-color: #e8eae6;
+    // box-sizing: border-box;
+    padding: 10px;
+    z-index: 200;
+    display: none;
+    /*to hide popup initially*/
+}
+.close-btn2 {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background-color: white;
+    color: black;
+    border-radius: 70%;
+    padding: 4px;
+    width: 2rem;
+    cursor: pointer;
 }
 
 

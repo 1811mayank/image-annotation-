@@ -1,15 +1,18 @@
-<div class="container text-center upload-heading">
-    <h1>Edit image</h1>
+<div class="container" style = "background-color: rgb(106, 227, 116)">
+
+<h1>Annotations</h1>
+<div class="close-btn2">
+    ×
 </div>
 
 
-
+        
 <div class="row">
   <div class="col-9">
         <%# <%= form_with(model: @picture, local: true)  :html => { multipart: true } do |f| %> 
-        <%= form_with model: @picture, url: "/pictures/#{@picture.id}", method: :patch,:html => { multipart: true } do |f| %>
+        <%= form_with model: @picture, url: "/pictures/#{@picture.id}", method: :patch do |f| %>
             
-            <%# <%= image_tag(@picture.picture_url) if @picture.picture? %> 
+          
             <div class="form-row" id="append-item1">
                 <div class="form-row" id="removerow2">
                     <div class="form-group right-margin">
@@ -25,8 +28,7 @@
                     </div>
                 </div>
             </div>
-            <%= f.file_field :picture , accept: 'picture/jpeg,picture/jpg,picture/png', :class => "form-control form-control-lg"%>
-           <%# <%= @uploader.retrieve_from_store!("#{@picture}")%> 
+
             <%if @picture.annotations %>
                 <div class="form-row" id="dynamic">
                     <% @picture.annotations.each do |i|%>
@@ -49,7 +51,7 @@
                 <div class="form-group right-margin">
                     <%= f.button :add, :type => 'button', class: "btn btn-success add"%> 
                 </div>
-                <%# <%= f.number_field :amount, value: "#{@picture.annotations.count}" %>
+            
                 
             <% end %>  
             
@@ -58,3 +60,6 @@
         <% end %>
     </div>
 </div>
+    </div>    
+                
+        
